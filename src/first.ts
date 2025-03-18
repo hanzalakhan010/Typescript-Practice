@@ -49,5 +49,7 @@ function discountCalculator(product:Product):Product{
         product.price = (product.price*product.discount)
     }
     return product
-
+}
+function filterNumbers(){
+    
 }

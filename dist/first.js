@@ -35,3 +35,5 @@ function discountCalculator(product) {
     }
     return product;
 }
+function filterNumbers() {
+}
