@@ -23,3 +23,31 @@ function formatUser(user:User){
     return `User:${user.name} is ${user.age} years old`
 
 }
+
+function isEven(num:number):boolean{
+    if (num%2==0){
+        return true
+    }
+    return false
+}
+
+// function reverseArray(arr:any[]):any[]{
+//     return arr.reverse()
+// }
+function reverseArray<T>(arr:T[]){
+    return arr.reverse()
+}
+
+// console.log(reverseArray<number>([1,2,3,4]))
+interface Product{
+    name:string,
+    price:number,
+    discount:number|null
+}
+function discountCalculator(product:Product):Product{
+    if (product.discount){
+        product.price = (product.price*product.discount)
+    }
+    return product
+
+}

@@ -17,3 +17,21 @@ function processData(param) {
 function formatUser(user) {
     return `User:${user.name} is ${user.age} years old`;
 }
+function isEven(num) {
+    if (num % 2 == 0) {
+        return true;
+    }
+    return false;
+}
+// function reverseArray(arr:any[]):any[]{
+//     return arr.reverse()
+// }
+function reverseArray(arr) {
+    return arr.reverse();
+}
+function discountCalculator(product) {
+    if (product.discount) {
+        product.price = (product.price * product.discount);
+    }
+    return product;
+}
