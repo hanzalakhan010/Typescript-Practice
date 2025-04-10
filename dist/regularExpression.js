@@ -19,18 +19,34 @@
 // let result = str.match(pattern)
 // console.log(result)
 
-// let str = 'the new passscode iis 9aB!x7@1 - keep it secret'
+// let str = 'the new passscode is 9aB!x7@1 - keep it secret'
 
-// let pattern = /\b([a-z]+|[A-Z]+){8}\b/
+// let pattern = /\b([a-z0-9$&+,:;=?@#|'<>.^*()%!-]){8}\b/gi
 
 // let result = str.match(pattern)
 // console.log(result)
 
-function spinalCase(str) {
-  let pattern = /(_|\s)/g;
-  str = str.replaceAll(pattern, "-");
-  return str.toLowerCase();
-}
+// function spinalCase(str) {
+//   let pattern = /(_|\s)/g;
+//   str = str.replaceAll(pattern, "-");
+//   return str.toLowerCase();
+// }
 
-console.log(spinalCase("This is Spinal Tap"));
-console.log(spinalCase("this_is_spinal_tap"));
+// console.log(spinalCase("This is Spinal Tap"));
+// console.log(spinalCase("this_is_spinal_tap"));
+
+// let str = 'items: Apple x3,Banana x12, Milk x1, chocolate x6'
+// let pattern = /[a-z]+[\s][x]\d/gi
+
+// let result = str.match(pattern)
+
+// let items = []
+// for(let ele of result){
+//     items.push(ele.split("x"))
+// }
+
+// console.log(items)
+
+let str = 'ha@g.com, f@d.d  fdsf hanzala@gmail.com  hanzala@gmail.c hanzala@gil.com hanzala@gmail.com`'
+
+let pattern = /\b[a-z]@[a-z].(com|org)/
