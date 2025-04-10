@@ -7,7 +7,7 @@ function sum(arr) {
     return sum;
 }
 function processData(param) {
-    if (typeof param == 'string') {
+    if (typeof param == "string") {
         return param.toLowerCase();
     }
     else {
@@ -31,9 +31,20 @@ function reverseArray(arr) {
 }
 function discountCalculator(product) {
     if (product.discount) {
-        product.price = (product.price * product.discount);
+        product.price = product.price * product.discount;
     }
     return product;
 }
-function filterNumbers() {
+function filterNumbers(param) {
+    let numArr = [];
+    for (let ele of param) {
+        if (typeof ele == "number") {
+            numArr.push(ele);
+        }
+    }
+    return numArr;
 }
+function mergeObject(T, U) {
+    return Object.assign(T, U);
+}
+console.log(mergeObject({ a: 1 }, { b: 3 }));
