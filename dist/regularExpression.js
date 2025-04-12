@@ -108,5 +108,5 @@ const Validate_Date_Format = (str)=>{
     let result = pattern.test(str)
     return result
 }
-console.log(Validate_Date_Format('99-01-2023'))
-console.log(Validate_Date_Format('01-01-2023'))
+// console.log(Validate_Date_Format('99-01-2023'))
+// console.log(Validate_Date_Format('01-01-2023'))
