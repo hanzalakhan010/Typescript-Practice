@@ -47,6 +47,26 @@
 
 // console.log(items)
 
-let str = 'ha@g.com, f@d.d  fdsf hanzala@gmail.com  hanzala@gmail.c hanzala@gil.com hanzala@gmail.com`'
+// let str = 'ha@g.com, f@d.d  fdsf hanzala@gmail.com  hanzala@gmail.c hanzala@gil.com hanzala@gmail.com`'
 
-let pattern = /\b[a-z]@[a-z].(com|org)/
+// let pattern = /\b[a-z]+@[a-z]+.(com|org)/gi
+
+// let results = str.match(pattern)
+
+// console.log(results)
+
+// 4. Secret Code in Dialogue
+
+// let str = "Agent 47 said: [CODE:alpha-4391], Agent 88 replied: [CODE:bravo-9821]"
+
+// let pattern = /\[CODE:([a-z]+-\d{4})]/gi
+
+// let results = str.match(pattern)
+// console.log(results)
+
+// 5. Remove the Noise
+
+// let str = '***@@@Hello@@@###'
+// let pattern = /[*@#]/g
+// let result =  str.replaceAll(pattern,'')
+// console.log(result)
