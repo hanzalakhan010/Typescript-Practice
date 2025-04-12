@@ -55,18 +55,58 @@
 
 // console.log(results)
 
-// 4. Secret Code in Dialogue
+const Secret_Code_In_Dialogue = (str) => {
+    let pattern = /\[CODE:([a-z]+-\d{4})]/gi
+    let results = str.match(pattern)
+    return results
+}
 
-// let str = "Agent 47 said: [CODE:alpha-4391], Agent 88 replied: [CODE:bravo-9821]"
+// console.log(Secret_Code_In_Dialogue("Agent 47 said: [CODE:alpha-4391], Agent 88 replied: [CODE:bravo-9821]"))
 
-// let pattern = /\[CODE:([a-z]+-\d{4})]/gi
+const Remove_the_Noise = (str) => {
+    let pattern = /[*@#]/g
+    let result = str.replaceAll(pattern, '')
+    return result
 
-// let results = str.match(pattern)
-// console.log(results)
+}
 
-// 5. Remove the Noise
+// console.log(Remove_the_Noise('***@@@Hello@@@###'))
 
-// let str = '***@@@Hello@@@###'
-// let pattern = /[*@#]/g
-// let result =  str.replaceAll(pattern,'')
-// console.log(result)
+
+const Sentence_Splitter = (str) => {
+    let pattern = /[...?!.]/g
+    let result = str.replaceAll(pattern, '-').split('-').filter((s) => Boolean(s) != false)
+    return result
+}
+// console.log(Sentence_Splitter("Wait... Are you sure? Yes! Let's go."))
+
+const Hashtag_Hunter = (str) => {
+    let pattern = /#[a-zA-z]+\b/g
+    let result = str.match(pattern)
+    return result
+}
+
+// console.log(Hashtag_Hunter("Loving the #sunset and #beachLife this summer!"))
+
+const Match_Repeated_Words = (str) => {
+    let pattern = /\b(\w+)\s\1\b/gi
+    let result = str.match(pattern)
+    return result
+}
+// console.log(Match_Repeated_Words("This is is just a test test for repeated repeated words."))
+const  CSV_Cleaner = (str)=>{
+    let pattern = /[,]{2,}/g
+    let result = str.replaceAll(pattern,',')
+    return result
+}
+// console.log(CSV_Cleaner("John,24,,Engineer,,London"))
+
+const Validate_Date_Format = (str)=>{
+    let pattern = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/
+            //   /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/
+
+    let result = pattern.test(str)
+    return result
+}
+console.log(Validate_Date_Format('99-01-2023'))
+console.log(Validate_Date_Format('01-01-2023'))
