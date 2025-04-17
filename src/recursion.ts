@@ -82,16 +82,21 @@ const Nested_Sum_Explorer = (element: any[]): number => {
     for (let ele of element) {
       if (Array.isArray(ele)) {
         total += Nested_Sum_Explorer(ele);
-      }
-      else{
-
-          total += ele;
+      } else {
+        total += ele;
       }
     }
     return total;
   }
-  return 0
+  return 0;
 };
 
 // console.log(Nested_Sum_Explorer([1, [1, [1]], 1]));
-const The_Tower_of_Emotions = (emotions :string[])=>{}
+const The_Tower_of_Emotions = (emotions: string[]) => {
+  if (emotions.length == 1) {
+    return emotions[0];
+  }
+  else{
+    return The_Tower_of_Emotions()
+  }
+};

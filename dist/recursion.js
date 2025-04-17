@@ -78,6 +78,7 @@ const Nested_Sum_Explorer = (element) => {
   return 0;
 };
 // console.log(Nested_Sum_Explorer([1, [1, [1]], 1]));
+<<<<<<< HEAD
 const The_Tower_of_Emotions = (emotions,tower) => {
     if (emotions.length>0) {
         return The_Tower_of_Emotions(emotions.slice(emotions.length-1))
@@ -90,3 +91,12 @@ console.log(em.slice(0))
 console.log(em.slice(1))
 console.log(em.slice(2))
 // console.log(The_Tower_of_Emotions(["a", "b", "c"]));
+=======
+const The_Tower_of_Emotions = (emotions) => {
+    if (emotions.length == 1) {
+        return emotions[0];
+    }
+    else {
+    }
+};
+>>>>>>> a32e206 (Implement initial logic for The_Tower_of_Emotions function in recursion files)
