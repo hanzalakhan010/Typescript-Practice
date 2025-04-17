@@ -1,0 +1,126 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    /* Increased max-width slightly */
+    margin: auto;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.toggle-button,button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+#addBookForm {
+    display: none;
+    /* Hidden by default */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+#addBookForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#addBookForm .checkbox-label {
+    display: inline-block;
+    /* Keep label next to checkbox */
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+#addBookForm input[type="text"],
+#addBookForm input[type="number"] {
+    width: calc(100% - 22px);
+    /* Adjust for padding/border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    /* Default background */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+/* Style for disabled inputs */
+#addBookForm input:disabled {
+    background-color: #e9ecef;
+    /* Lighter grey background */
+    cursor: not-allowed;
+    /* Indicate non-interactive state */
+}
+
+#addBookForm input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+#addBookForm button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addBookForm button:hover {
+    background-color: #218838;
+}
+
+/* Hide file size field by default */
+#fileSizeDiv {
+    display: none;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+
+    th,
+    td {
+        font-size: 0.9em;
+    }
+
+    .toggle-button,
+    #addBookForm button {
+        width: 100%;
+        text-align: center;
+    }
+}   
