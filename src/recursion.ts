@@ -92,11 +92,11 @@ const Nested_Sum_Explorer = (element: any[]): number => {
 };
 
 // console.log(Nested_Sum_Explorer([1, [1, [1]], 1]));
-const The_Tower_of_Emotions = (emotions: string[]) => {
-  if (emotions.length == 1) {
-    return emotions[0];
-  }
-  else{
-    return The_Tower_of_Emotions()
-  }
-};
+// const The_Tower_of_Emotions = (emotions: string[]) => {
+//   if (emotions.length == 1) {
+//     return emotions[0];
+//   }
+//   else{
+//     // return The_Tower_of_Emotions()
+//   }
+// };
