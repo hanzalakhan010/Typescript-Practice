@@ -57,9 +57,12 @@ class Library {
         localStorage.setItem("books", JSON.stringify(this.books));
     }
     renderBooks() {
+        console.log(this.selectedBooks);
         let tbody = document.getElementById("tbody");
         if (tbody) {
+            tbody.innerHTML = '';
             this.selectedBooks.forEach((book) => {
+                // console.log("🚀 ~ Library ~ this.selectedBooks.forEach ~ book:", book)
                 tbody.insertAdjacentHTML("beforeend", `
           <tr>
             <td>${book.title}</td>
