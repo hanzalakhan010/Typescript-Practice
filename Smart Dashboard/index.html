@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Mood Dashboard</title>
+    <script src="src/index.js" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .dashboard {
+            background-color: #ffffffcc;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .dashboard h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            background-color: #f9f9f9;
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-block span.label {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .notification-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #fff3e0;
+            border-left: 6px solid #ffb74d;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #888;
+            text-align: center;
+        }
+
+        @media (max-width: 500px) {
+            .info-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="dashboard">
+            <h1>Smart Mood Dashboard</h1>
+
+            <div class="info-block">
+                <span class="label">Location:</span>
+                <span id="location">Detecting...</span>
+            </div>
+
+            <div class="info-block">
+                <span class="label">Battery Status:</span>
+                <span id="battery">Loading...</span>
+            </div>
+
+            <div class="info-block">
+                <span class="label">Time of Day:</span>
+                <span id="timeofday">--:--</span>
+            </div>
+
+            <div class="notification-box" id="notification">
+                Awaiting smart suggestions...
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Smart UX Labs · v1.0
+        </div>
+    </body>
+
+</html>
