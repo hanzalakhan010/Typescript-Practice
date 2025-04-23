@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DoodleBoard</title>
+    <script src="script.js" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .board-container {
+            background: white;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .controls button {
+            flex: 1 1 auto;
+            padding: 0.6rem 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+
+        canvas {
+            width: 100%;
+            height: 400px;
+            background: #fff;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            cursor: crosshair;
+        }
+
+        .message-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e6ffed;
+            border-left: 5px solid #28a745;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #155724;
+        }
+
+        @media (max-width: 600px) {
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="board-container">
+        <h1>Canvas DoodleBoard</h1>
+
+        <div class="controls">
+            <input type="color" id = "color-picker">
+            <input type = 'range' id = 'brush'>
+            <button id="clearBtn" onclick="clearCanvas()">🧼 Clear Canvas</button>
+            <button id="copyBtn">📋 Copy Drawing</button>
+            <button id="notifyBtn">🔔 Send Notification</button>
+        </div>
+
+        <canvas id="doodleCanvas" width="800" height="400"></canvas>
+
+        <div class="message-box" id="statusBox">
+            Start doodling! Use the buttons above to interact.
+        </div>
+    </div>
+</body>
+
+</html>
