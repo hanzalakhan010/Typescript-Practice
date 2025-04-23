@@ -16,11 +16,28 @@ let firstElement = (arg) => {
 function getProperty(obj, key) {
     return obj[key];
 }
-function addProperty(obj, key, value) {
+function modifyProperty(obj, key, value) {
     return Object.assign(Object.assign({}, obj), { [key]: value });
 }
 let x = { a: 1, b: 3, c: 2 };
-console.log("🚀 ~ getProperty:", getProperty(x, "a"));
-x = addProperty(x, 'z', 10);
-console.log(x);
-// console.log("🚀 ~ getProperty:", getProperty(x, "z"));
+// console.log("🚀 ~ getProperty:", getProperty(x, "a"));
+x = modifyProperty(x, "a", 10);
+// console.log(x);
+// console.log("🚀 ~ getProperty:", getProperty(x, "a"))
+function parseJson(rawJson) {
+    try {
+        let json = JSON.parse(rawJson);
+        return json;
+    }
+    catch (_a) {
+        return null;
+    }
+}
+// console.log(parseJson('{"name":"hanzala}'))
+function groupBy(objects, key) {
+    let group = {};
+    objects.forEach((object) => {
+        // if (group?.[key]){
+        // }
+    });
+}

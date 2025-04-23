@@ -31,7 +31,7 @@ interface Address {
 function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
   return obj[key];
 }
-function addProperty<Type, Key extends string, Value>(
+function modifyProperty<Type, Key extends keyof Type, Value>(
   obj: Type,
   key: Key,
   value: Value
@@ -41,15 +41,35 @@ function addProperty<Type, Key extends string, Value>(
 
 let x = { a: 1, b: 3, c: 2 };
 
-console.log("🚀 ~ getProperty:", getProperty(x, "a"));
+// console.log("🚀 ~ getProperty:", getProperty(x, "a"));
+
+x = modifyProperty(x, "a", 10);
+
+// console.log(x);
+
+// console.log("🚀 ~ getProperty:", getProperty(x, "a"))
 
 
-x = addProperty(x,'z',10)
+function parseJson(rawJson:string):object|null{
+    try{
+        let json = JSON.parse(rawJson)
+        return  json
+    }
+    catch{
+        return null
+    }
+}
+// console.log(parseJson('{"name":"hanzala}'))
 
-console.log(x)
 
-// console.log("🚀 ~ getProperty:", getProperty(x, "z"));
+function groupBy(objects:Object[],key:string){
+    let group = {}
+
+    objects.forEach((object)=>{
+        // if (group?.[key]){
+
+        // }
+    })
 
 
-
-
+}
