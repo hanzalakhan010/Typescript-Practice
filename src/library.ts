@@ -46,7 +46,7 @@ class Library {
   removeBook(ISBN: string) {
     this.books = this.books.filter((book) => book.ISBN != ISBN);
     this.selectedBooks = this.books;
-    console.log(this.books)
+    console.log(this.books);
     this.saveState();
     this.renderBooks();
   }
@@ -64,14 +64,20 @@ class Library {
   saveState() {
     localStorage.setItem("books", JSON.stringify(this.books));
   }
+  editBook(ISBN: string) {
+    let book = this.books.find((book) => book.ISBN == ISBN);
+    if (book) {
+      
+    }
+  }
   renderBooks() {
-    console.log(this.selectedBooks)
+    console.log(this.selectedBooks);
     let tbody = document.getElementById("tbody");
     if (tbody) {
-      tbody.innerHTML = ''
+      tbody.innerHTML = "";
       this.selectedBooks.forEach((book: Book & EBook) => {
-      // console.log("🚀 ~ Library ~ this.selectedBooks.forEach ~ book:", book)
-    
+        // console.log("🚀 ~ Library ~ this.selectedBooks.forEach ~ book:", book)
+
         tbody.insertAdjacentHTML(
           "beforeend",
           `
@@ -126,3 +132,16 @@ library.getBookList();
     toggleButton.click();
   }
 );
+const toggleButton = document.getElementById("toggleFormBtn");
+const form = document.getElementById("addBookForm");
+if (toggleButton && form) {
+  toggleButton.addEventListener("click", () => {
+    if (form.style.display === "none" || form.style.display === "") {
+      form.style.display = "block";
+      toggleButton.textContent = "Hide Form";
+    } else {
+      form.style.display = "none";
+      toggleButton.textContent = "Add New Book";
+    }
+  });
+}

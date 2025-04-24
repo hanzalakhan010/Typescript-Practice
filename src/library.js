@@ -1,0 +1,127 @@
+"use strict";
+class Book {
+    constructor(title, author, ISBN, frequency) {
+        this.title = title;
+        this.ISBN = ISBN;
+        this.frequency = frequency;
+        this.author = author;
+    }
+    getDetails() {
+        return `${this.title} is written by ${this.author}`;
+    }
+}
+class EBook extends Book {
+    constructor(title, author, ISBN, fileSize) {
+        super(title, author, ISBN, 0);
+        this.fileSize = fileSize;
+    }
+    getDetails() {
+        return `${super.getDetails()}, File Size = ${this.fileSize}`;
+    }
+}
+class Library {
+    constructor() {
+        this.books = [];
+        this.selectedBooks = [];
+    }
+    loadBooks() {
+        let books = localStorage.getItem("books");
+        if (books) {
+            this.books = JSON.parse(books);
+        }
+    }
+    addBook(book) {
+        this.books.push(book);
+        this.renderBooks();
+        this.saveState();
+    }
+    removeBook(ISBN) {
+        this.books = this.books.filter((book) => book.ISBN != ISBN);
+        this.selectedBooks = this.books;
+        console.log(this.books);
+        this.saveState();
+        this.renderBooks();
+    }
+    findBook(title) {
+        let book = this.books.find((book) => book.title == title);
+        if (book) {
+            this.selectedBooks = [book];
+            this.renderBooks();
+        }
+    }
+    getBookList() {
+        this.selectedBooks = this.books;
+        this.renderBooks();
+    }
+    saveState() {
+        localStorage.setItem("books", JSON.stringify(this.books));
+    }
+    editBook(ISBN) {
+        let book = this.books.find((book) => book.ISBN == ISBN);
+        if (book) {
+        }
+    }
+    renderBooks() {
+        console.log(this.selectedBooks);
+        let tbody = document.getElementById("tbody");
+        if (tbody) {
+            tbody.innerHTML = "";
+            this.selectedBooks.forEach((book) => {
+                // console.log("🚀 ~ Library ~ this.selectedBooks.forEach ~ book:", book)
+                tbody.insertAdjacentHTML("beforeend", `
+          <tr>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.ISBN}</td>
+            <td>${book.frequency ? book.frequency : "N/A"}</td>
+            <td>${book.fileSize ? book.fileSize : "N/A"}</td>
+            <td><button>Edit</button></td>
+            <td><button onClick = 'library.removeBook("${book.ISBN}")'>Delete</button></td>
+          </tr>
+          `);
+            });
+        }
+    }
+}
+var library = new Library();
+library.loadBooks();
+library.getBookList();
+document.getElementById("addBookForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    let form = event.target;
+    let toggleButton = document.getElementById("toggleFormBtn");
+    let title = form.elements.namedItem("title")?.value;
+    let author = form.elements.namedItem("author")?.value;
+    let ISBN = form.elements.namedItem("isbn")?.value;
+    let frequency = form.elements.namedItem("frequency")
+        ?.value;
+    let fileSize = form.elements.namedItem("fileSize")
+        ?.value;
+    let isEbook = form.elements.namedItem("isEbook")
+        ?.checked;
+    // if (titl)
+    if (isEbook) {
+        let newEbook = new EBook(title, author, ISBN, fileSize);
+        library.addBook(newEbook);
+    }
+    else {
+        let newBook = new Book(title, author, ISBN, parseInt(frequency));
+        library.addBook(newBook);
+    }
+    form.reset();
+    toggleButton.click();
+});
+const toggleButton = document.getElementById("toggleFormBtn");
+const form = document.getElementById("addBookForm");
+if (toggleButton && form) {
+    toggleButton.addEventListener("click", () => {
+        if (form.style.display === "none" || form.style.display === "") {
+            form.style.display = "block";
+            toggleButton.textContent = "Hide Form";
+        }
+        else {
+            form.style.display = "none";
+            toggleButton.textContent = "Add New Book";
+        }
+    });
+}
