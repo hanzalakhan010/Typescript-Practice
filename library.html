@@ -2,55 +2,86 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Clipboard API Demo</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href='styles/library.css' />
+    <script src="dist/library.js" defer >
 
-    input,
-    button {
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 10px;
-      margin-right: 10px;
-    }
-  </style>
+    </script>
 </head>
 
 <body>
+    <div class="container">
+        <h1>Library</h1>
 
-  <h2>Notification API Example</h2>
-  <button onclick="getNotification()">Get Notify</button>
+        <button id="toggleFormBtn" class="toggle-button">Add New Book</button>
 
-  <script>
-    async function getNotification() {
+        <form id="addBookForm" >
+            <h2>Add Book Details</h2>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div>
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" required>
+            </div>
+            <div>
+                <label for="frequency">Frequency:</label>
+                <input type="number" id="frequency" name="frequency" min="0" value="1">
+            </div>
+            <div>
+                <input type="checkbox" id="isEbook" name="isEbook">
+                <label for="isEbook" class="checkbox-label">Is this an Ebook?</label>
+            </div>
+            <div id="fileSizeDiv">
+                <label for="fileSize">File Size (MB):</label>
+                <input type="number" id="fileSize" name="fileSize" min="0" step="0.1">
+            </div>
+            <button type="submit">Add Book</button>
+        </form>
 
+        <h2>Book List</h2>
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Frequency</th>
+                    <th>File Size (MB)</th>
+                    <!-- <th></th>
+                    <th></th> -->
+                </tr>
+            </thead>
+            <tbody id = 'tbody'>
+                <!-- Book rows will be added here dynamically or statically -->
+               
+            </tbody>
+        </table>
+    </div>
 
-      if (!("Notification" in window)) {
-        alert("This browser does not support notifications.");
-      }
+    <script>
+        const toggleButton = document.getElementById('toggleFormBtn');
+        const form = document.getElementById('addBookForm');
+        
+        toggleButton.addEventListener('click', () => {
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+                toggleButton.textContent = 'Hide Form';
+            } else {
+                form.style.display = 'none';
+                toggleButton.textContent = 'Add New Book';
+            }
+        });
 
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          console.log("granted");
-          if (Notification.permission === "granted") {
-            const notification = new Notification("Hello!", {
-              body: "This is a notification from my website!",
-              // icon: "icon.png" // Optional icon URL
-            });
-          }
-        } else if (permission === "denied") {
-          console.log("Denied");
-        } else {
-          console.log("Default");
-        }
-      });
-    }
-  </script>
-
+      
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Clipboard API Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Notification API Example</h2>
+  <button onclick="getNotification()">Get Notify</button>
+
+  <script>
+    async function getNotification() {
+
+
+      if (!("Notification" in window)) {
+        alert("This browser does not support notifications.");
+      }
+
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("granted");
+          if (Notification.permission === "granted") {
+            const notification = new Notification("Hello!", {
+              body: "This is a notification from my website!",
+              // icon: "icon.png" // Optional icon URL
+            });
+          }
+        } else if (permission === "denied") {
+          console.log("Denied");
+        } else {
+          console.log("Default");
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
